@@ -1,6 +1,6 @@
 {
-  "name": "@orbital-systems/react-native-esp-idf-provisioning",
-  "version": "0.2.8",
+  "name": "@bitsoflove/react-native-esp-idf-provisioning",
+  "version": "0.2.9-beta.1",
   "description": "Android and iOS wrapper for ESP IDF provisioning",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
