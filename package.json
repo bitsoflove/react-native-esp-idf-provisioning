@@ -1,6 +1,6 @@
 {
   "name": "@bitsoflove/react-native-esp-idf-provisioning",
-  "version": "0.2.9",
+  "version": "0.2.9-scanwififix",
   "description": "Android and iOS wrapper for ESP IDF provisioning",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
