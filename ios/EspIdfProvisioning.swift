@@ -20,10 +20,10 @@ class EspIdfProvisioning: NSObject {
         let security = ESPSecurity(rawValue: security)
 
         self.espDevices.removeAll()
-        
+
         var invoked = false
         ESPProvisionManager.shared.searchESPDevices(devicePrefix: devicePrefix, transport: transport, security: security) { espDevices, error in
-            // Prevent multiple callback invokation error 
+            // Prevent multiple callback invokation error
             guard !invoked else { return }
 
             if error != nil {
@@ -180,8 +180,12 @@ class EspIdfProvisioning: NSObject {
             guard !invoked else { return }
 
             if error != nil {
-                reject("error", error?.description, nil)
-                invoked = true
+                // About half a second after error, success happens, so hold the error for a bit (3 seconds)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    guard !invoked else { return }
+                    reject("error", error?.description, nil)
+                    invoked = true
+                }
                 return
             }
 
